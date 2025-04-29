@@ -4,87 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Confirm Details</title>
-  <style>
-    body {
-      margin: 0;
-      background: linear-gradient(135deg, #1f1f1f, #2c3e50);
-      font-family: 'Segoe UI', sans-serif;
-      color: #f1f1f1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding: 20px;
-    }
-
-    .container {
-      background-color: #1e1e1e;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      max-width: 400px;
-      width: 100%;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 1.4rem;
-      color: #ffffff;
-    }
-
-    .detail {
-      margin: 10px 0;
-      font-size: 0.95rem;
-    }
-
-    .detail strong {
-      display: inline-block;
-      width: 120px;
-      color: #bbb;
-    }
-
-    .detail span {
-      color: #fefefe;
-    }
-
-    .button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 25px;
-      background: linear-gradient(90deg, #00c6ff, #0072ff);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 114, 255, 0.4);
-    }
-
-    /* Hide scrollbars */
-    ::-webkit-scrollbar {
-      width: 0;
-      background: transparent;
-    }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <div class="container">
-    <h1>Confirm Your Details</h1>
-    <div class="detail"><strong>Last Name:</strong> <span id="lastname">Loading...</span></div>
-    <div class="detail"><strong>First Name:</strong> <span id="firstname">Loading...</span></div>
-    <div class="detail"><strong>Phone Number:</strong> <span id="phone">Loading...</span></div>
-    <div class="detail"><strong>ID Number:</strong> <span id="idnumber">Loading...</span></div>
-    <div class="detail"><strong>Email Address:</strong> <span id="email">Loading...</span></div>
-    <div class="detail"><strong>Location:</strong> <span id="location">Loading...</span></div>
-    <div class="detail"><strong>Date of Birth:</strong> <span id="dob">Loading...</span></div>
-    <button class="button" onclick="confirmDetails()">Confirm</button>
+<body class="bg-gradient-to-br from-yellow-500 via-yellow-200 to-white min-h-screen flex items-center justify-center p-4 text-black">
+
+  <div class="w-full max-w-md bg-white/60 backdrop-blur-lg border border-yellow-300 rounded-2xl shadow-2xl p-6">
+    <h1 class="text-2xl font-bold text-center text-yellow-900 mb-4">Confirm Your Details</h1>
+
+    <div class="space-y-3 text-sm">
+      <div class="flex justify-between"><span class="font-semibold text-gray-700">Last Name:</span> <span id="lastname">Loading...</span></div>
+      <div class="flex justify-between"><span class="font-semibold text-gray-700">First Name:</span> <span id="firstname">Loading...</span></div>
+      <div class="flex justify-between"><span class="font-semibold text-gray-700">Phone Number:</span> <span id="phone">Loading...</span></div>
+      <div class="flex justify-between"><span class="font-semibold text-gray-700">ID Number:</span> <span id="idnumber">Loading...</span></div>
+      <div class="flex justify-between"><span class="font-semibold text-gray-700">Email:</span> <span id="email">Loading...</span></div>
+      <div class="flex justify-between"><span class="font-semibold text-gray-700">Location:</span> <span id="location">Loading...</span></div>
+      <div class="flex justify-between"><span class="font-semibold text-gray-700">Date of Birth:</span> <span id="dob">Loading...</span></div>
+    </div>
+
+    <button onclick="confirmDetails()"
+      class="w-full mt-6 py-3 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded-lg transition duration-300 shadow-md">
+      Confirm
+    </button>
   </div>
 
   <script>
