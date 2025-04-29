@@ -28,18 +28,17 @@
   <link rel="icon" type="image/png" href="favicon.ico">
 </head>
 
-<body class="bg-gradient-to-tr from-yellow-300 via-yellow-100 to-white text-black min-h-screen flex items-center justify-center px-4">
+<body class="bg-gradient-to-tr from-yellow-500 via-yellow-300 to-white text-black min-h-screen flex items-center justify-center px-4">
 
-
-  <div class="bg-white/20 backdrop-blur-md rounded-2xl shadow-2xl max-w-sm w-full p-6 text-center border border-white/30">
+  <div class="bg-white/60 backdrop-blur-lg rounded-2xl shadow-2xl max-w-sm w-full p-6 text-center border border-yellow-200">
     <img src="WhatsApp Image 2025-04-29 at 18.41.45.jpeg" alt="Logo" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg">
 
-    <h1 class="text-3xl font-bold mb-2 text-white">Welcome to True pesa</h1>
-    <p class="text-gray-100 mb-6">Start your journey to financial freedom in just a few simple steps.</p>
+    <h1 class="text-3xl font-bold mb-2 text-yellow-900">Welcome to True pesa</h1>
+    <p class="text-gray-700 mb-6">Start your journey to financial freedom in just a few simple steps.</p>
 
     <div class="text-left mb-6">
-      <p class="font-semibold text-white mb-2">Here's how to begin:</p>
-      <ol class="list-decimal list-inside text-gray-100 space-y-1">
+      <p class="font-semibold text-yellow-800 mb-2">Here's how to begin:</p>
+      <ol class="list-decimal list-inside text-gray-800 space-y-1">
         <li>Create an account</li>
         <li>Verify your phone number</li>
         <li>Access your dashboard</li>
@@ -47,7 +46,7 @@
     </div>
 
     <!-- Get Started button -->
-    <button id="getStartedBtn" class="block bg-cyan-600 hover:bg-cyan-700 text-white py-2 rounded-xl text-lg font-semibold transition-all duration-300 shadow-md hover:shadow-xl w-full">
+    <button id="getStartedBtn" class="block bg-yellow-600 hover:bg-yellow-700 text-white py-2 rounded-xl text-lg font-semibold transition-all duration-300 shadow-md hover:shadow-xl w-full">
       Get Started
     </button>
   </div>
@@ -64,7 +63,6 @@
 
     document.getElementById('getStartedBtn').addEventListener('click', async () => {
       if (deferredPrompt) {
-        // Show install prompt first
         deferredPrompt.prompt();
 
         const { outcome } = await deferredPrompt.userChoice;
@@ -75,11 +73,8 @@
         }
 
         deferredPrompt = null;
-
-        // After install prompt (no matter accepted or skipped), redirect to register page
         window.location.href = "register.html";
       } else {
-        // If no install prompt available, just proceed
         window.location.href = "register.html";
       }
     });
@@ -95,3 +90,4 @@
 
 </body>
 </html>
+
