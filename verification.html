@@ -5,120 +5,114 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Verification</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: #f1f5f9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      min-height: 100vh;
-    }
-  
-    h1 {
-      margin-bottom: 20px;
-      font-size: 2em;
-      color: #e0f7fa;
-    }
-  
-    .account-info {
-      background-color: rgba(17, 25, 40, 0.85);
-      padding: 20px;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-      max-width: 420px;
-      width: 100%;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-  
-    .account-info p {
-      font-size: 1em;
-      margin: 8px 0;
-      color: #cfd8dc;
-    }
-  
-    .account-info h2 {
-      color: #ffffff;
-      margin: 12px 0;
-      font-size: 1.3em;
-    }
-  
-    .thank-you {
-      font-size: 0.95em;
-      font-weight: 600;
-      color: #a7ffeb;
-    }
-  
-    ol {
-      text-align: left;
-      padding-left: 20px;
-      color: #b0bec5;
-      font-size: 0.9em;
-      margin-top: 10px;
-    }
-  
-    .input-section {
-      margin-top: 20px;
-    }
-  
-    textarea {
-      width: 100%;
-      height: 80px;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      background: #263238;
-      color: #80d8ff;
-      font-size: 0.95em;
-      resize: none;
-      margin-bottom: 12px;
-      box-shadow: inset 0 0 5px rgba(0, 174, 255, 0.4);
-    }
-  
-    button {
-      padding: 12px 24px;
-      background: linear-gradient(to right, #00bcd4, #4dd0e1);
-      color: #fff;
-      border: none;
-      border-radius: 30px;
-      font-size: 1em;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
-    }
-  
-    button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(0, 188, 212, 0.5);
-    }
-  
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(5, 10, 20, 0.9);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      font-size: 1.5em;
-      font-weight: bold;
-      flex-direction: column;
-      z-index: 999;
-    }
-  
-    #timer {
-      margin-top: 10px;
-      font-size: 1.4em;
-      color: #69f0ae;
-    }
+   body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #fff176, #fbc02d, #f57f17); /* Yellow gradient */
+  color: #212121; /* Dark text for contrast */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #212121;
+}
+
+.account-info {
+  background-color: rgba(255, 255, 255, 0.95); /* Light background for readability */
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.account-info p,
+.account-info h2 {
+  color: #333;
+}
+
+.thank-you {
+  font-size: 0.95em;
+  font-weight: 600;
+  color: #d84315;
+}
+
+ol {
+  text-align: left;
+  padding-left: 20px;
+  color: #444;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+.input-section {
+  margin-top: 20px;
+}
+
+textarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  background: #fffde7;
+  color: #212121;
+  font-size: 0.95em;
+  resize: none;
+  margin-bottom: 12px;
+  box-shadow: inset 0 0 5px rgba(255, 204, 0, 0.3);
+}
+
+button {
+  padding: 12px 24px;
+  background: linear-gradient(to right, #fdd835, #fbc02d);
+  color: #212121;
+  border: none;
+  border-radius: 30px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(251, 192, 45, 0.4);
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(251, 192, 45, 0.6);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.5em;
+  font-weight: bold;
+  flex-direction: column;
+  z-index: 999;
+}
+
+#timer {
+  margin-top: 10px;
+  font-size: 1.4em;
+  color: #ffeb3b;
+}
+
   </style>
   
 </head>
