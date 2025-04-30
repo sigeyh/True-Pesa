@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Loan Eligibility</title>
+  <title>Loan Eligibility</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #fceabb, #f8b500); /* Yellow to orange gradient */
-      color: #333;
+      background: linear-gradient(135deg, #fef08a, #7e22ce); /* Yellow to Purple */
+      color: #2e2e2e;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -19,9 +19,10 @@
     }
 
     h1 {
+      font-size: 2rem;
       margin-bottom: 20px;
-      font-size: 1.5rem;
-      color: #222;
+      font-weight: bold;
+      color: #1f1f1f;
     }
 
     canvas {
@@ -29,21 +30,22 @@
     }
 
     button {
-      margin-top: 25px;
-      padding: 12px 20px;
-      background: linear-gradient(90deg, #f7971e, #ffd200); /* orange to yellow button */
-      border: none;
-      border-radius: 8px;
-      color: #222;
+      margin-top: 30px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #facc15, #f59e0b); /* Bright yellow-orange */
+      color: #1f1f1f;
       font-size: 1rem;
-      font-weight: bold;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
     }
 
     button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(248, 181, 0, 0.4);
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
     .overlay {
@@ -52,14 +54,15 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.3);
       display: flex;
       justify-content: center;
       align-items: center;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease-in-out;
-      z-index: 10;
+      transition: all 0.3s ease;
+      z-index: 100;
     }
 
     .overlay.show {
@@ -68,13 +71,13 @@
     }
 
     .loading-gif {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
     }
 
     @media (max-width: 480px) {
       h1 {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         text-align: center;
         padding: 0 10px;
       }
@@ -83,15 +86,18 @@
         width: 90vw;
         height: 90vw;
       }
+
+      button {
+        width: 80%;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Your Loan Eligibility</h1>
+  <h1>Check Your Loan Eligibility</h1>
   <canvas id="progressCanvas" width="300" height="300"></canvas>
-  <button id="viewSavings">Get Loan</button>
+  <button id="viewSavings">Continue</button>
 
-  <!-- Overlay with GIF -->
   <div class="overlay" id="overlay">
     <img src="pro.gif" alt="Loading..." class="loading-gif" />
   </div>
@@ -103,16 +109,10 @@
     const centerY = canvas.height / 2;
     const radius = 120;
 
-    function generateTarget() {
-      const min = 300;
-      const max = 700;
-      return (Math.floor(Math.random() * (max - min + 1)) + min) * 5;
-    }
-
-    const targetValue = generateTarget();
+    const targetValue = Math.floor(Math.random() * 81 + 20) * 10; // 200–1000
     let currentValue = 0;
-    let startTime = null;
     const duration = 3000;
+    let startTime = null;
 
     function formatNumber(num) {
       return num.toLocaleString('en-US');
@@ -124,22 +124,26 @@
       // Background circle
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-      ctx.strokeStyle = '#ddd';
+      ctx.strokeStyle = '#eee';
       ctx.lineWidth = 20;
       ctx.stroke();
 
+      // Foreground progress arc
       const progress = value / targetValue;
       const endAngle = -Math.PI / 2 + progress * 2 * Math.PI;
 
-      // Foreground arc
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, -Math.PI / 2, endAngle);
-      ctx.strokeStyle = '#ff9800'; // orange
+      ctx.strokeStyle = '#facc15'; // Yellow
       ctx.lineWidth = 20;
+      ctx.shadowColor = "#fbbf24";
+      ctx.shadowBlur = 15;
       ctx.stroke();
 
+      ctx.shadowBlur = 0;
+
       // Value text
-      ctx.fillStyle = '#222';
+      ctx.fillStyle = '#1f1f1f';
       ctx.font = '24px Segoe UI';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -151,7 +155,7 @@
       const elapsed = timestamp - startTime;
       const ratio = Math.min(elapsed / duration, 1);
 
-      currentValue = Math.round((ratio * targetValue) / 5) * 5;
+      currentValue = Math.round((ratio * targetValue) / 10) * 10;
       drawProgress(currentValue);
 
       if (ratio < 1) {
