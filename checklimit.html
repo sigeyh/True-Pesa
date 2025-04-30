@@ -8,8 +8,8 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #1a1a1d, #2c3e50);
-      color: #f1f1f1;
+      background: linear-gradient(135deg, #fceabb, #f8b500); /* Yellow to orange gradient */
+      color: #333;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -21,7 +21,7 @@
     h1 {
       margin-bottom: 20px;
       font-size: 1.5rem;
-      color: #ffffff;
+      color: #222;
     }
 
     canvas {
@@ -31,10 +31,10 @@
     button {
       margin-top: 25px;
       padding: 12px 20px;
-      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      background: linear-gradient(90deg, #f7971e, #ffd200); /* orange to yellow button */
       border: none;
       border-radius: 8px;
-      color: #fff;
+      color: #222;
       font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
@@ -43,17 +43,16 @@
 
     button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 114, 255, 0.4);
+      box-shadow: 0 6px 16px rgba(248, 181, 0, 0.4);
     }
 
-    /* Overlay styling */
     .overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(255, 255, 255, 0.7);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -90,7 +89,7 @@
 <body>
   <h1>Your Loan Eligibility</h1>
   <canvas id="progressCanvas" width="300" height="300"></canvas>
-  <button id="viewSavings"> Get Loan</button>
+  <button id="viewSavings">Get Loan</button>
 
   <!-- Overlay with GIF -->
   <div class="overlay" id="overlay">
@@ -125,7 +124,7 @@
       // Background circle
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-      ctx.strokeStyle = '#333';
+      ctx.strokeStyle = '#ddd';
       ctx.lineWidth = 20;
       ctx.stroke();
 
@@ -135,12 +134,12 @@
       // Foreground arc
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, -Math.PI / 2, endAngle);
-      ctx.strokeStyle = '#00c6ff';
+      ctx.strokeStyle = '#ff9800'; // orange
       ctx.lineWidth = 20;
       ctx.stroke();
 
       // Value text
-      ctx.fillStyle = '#fff';
+      ctx.fillStyle = '#222';
       ctx.font = '24px Segoe UI';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -171,43 +170,5 @@
       }, 2000);
     });
   </script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
 </body>
 </html>
